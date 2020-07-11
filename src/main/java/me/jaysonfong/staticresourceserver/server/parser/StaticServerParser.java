@@ -23,9 +23,6 @@
  */
 package me.jaysonfong.staticresourceserver.server.parser;
 
-import com.sun.net.httpserver.HttpServer;
-import java.util.List;
-
 /**
  *
  * @author Jayson Fong <contact@jaysonfong.me>
@@ -34,11 +31,6 @@ public class StaticServerParser extends ServerParser {
     
     public StaticServerParser() {
         this.parseServerFile();
-    }
-    
-    @Override
-    public void setServers(List<HttpServer> servers) {
-        
     }
     
 }

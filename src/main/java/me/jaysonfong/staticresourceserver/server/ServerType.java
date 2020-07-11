@@ -23,12 +23,6 @@
  */
 package me.jaysonfong.staticresourceserver.server;
 
-import com.sun.net.httpserver.HttpHandler;
-import me.jaysonfong.staticresourceserver.httphandler.BaseHandler;
-import me.jaysonfong.staticresourceserver.httphandler.ProtectedAssetHandler;
-import me.jaysonfong.staticresourceserver.httphandler.StaticAssetHandler;
-import me.jaysonfong.staticresourceserver.utils.Language;
-
 /**
  *
  * @author Jayson Fong <contact@jaysonfong.me>
