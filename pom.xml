@@ -27,7 +27,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>me.jaysonfong.staticresourceserver.core.Server</mainClass>
+                            <mainClass>me.jaysonfong.staticresourceserver.core.StaticResourceServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
