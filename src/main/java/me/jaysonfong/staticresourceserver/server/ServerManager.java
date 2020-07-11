@@ -31,37 +31,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import me.jaysonfong.staticresourceserver.server.parser.ServerParser;
 import me.jaysonfong.staticresourceserver.utils.Language;
 
 /**
  *
  * @author Jayson Fong <contact@jaysonfong.me>
  */
-public class ServerManager {
+public class ServerManager implements Runnable {
     
     public static ServerManager S;
     
     protected List<HttpServer> httpServers;
     
+    protected ServerParser parser;
+    
     protected ServerManager() {
         httpServers = new ArrayList();
     }
     
-    public static final void setInstance() {
+    public static final ServerManager setInstance() {
         S = new ServerManager();
+        return S;
+    }
+    
+    public ServerManager setParser(ServerParser parser) {
+        this.parser = parser;
+        return this;
     }
     
     public void createServers(Server[] servers) {
         for (Server server : servers) configureServer(server);
     }
     
-    public void startServers() {
+    @Override
+    public void run() {
+        if (parser != null) parser.setServers(httpServers);
         httpServers.forEach(httpServer -> {
             httpServer.start();
         });
     }
     
-    public void stopServers() {
+    public void stop() {
         this.stopServers(0b0);
     }
     

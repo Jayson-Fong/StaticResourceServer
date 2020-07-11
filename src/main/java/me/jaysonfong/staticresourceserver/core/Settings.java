@@ -71,7 +71,7 @@ public class Settings {
     }
     
     public final Path getDocumentRoot() {
-        return documentRoot;
+        return this.documentRoot;
     }
     
     public final int getServerPort() {

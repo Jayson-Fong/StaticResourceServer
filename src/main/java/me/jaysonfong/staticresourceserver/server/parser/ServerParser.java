@@ -21,32 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package me.jaysonfong.staticresourceserver.core;
+package me.jaysonfong.staticresourceserver.server.parser;
 
-import me.jaysonfong.staticresourceserver.server.parser.ServerParser;
-import me.jaysonfong.staticresourceserver.server.ServerManager;
-import me.jaysonfong.staticresourceserver.server.parser.StaticServerParser;
+import com.sun.net.httpserver.HttpServer;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
  * @author Jayson Fong <contact@jaysonfong.me>
  */
-public class StaticResourceServer {
+public abstract class ServerParser {
     
-    public static void main(String[] args) {
-        preRun();
-        ServerParser serverParser = new StaticServerParser();
-        ServerManager serverManager = ServerManager
-                .setInstance()
-                .setParser(serverParser);
-        serverManager.run();
+    public static String SERVER_CONF_FILE = "servers.xml";
+    public HttpServer[] servers;
+    
+    public void setServers(List<HttpServer> listServers) {
+        listServers.addAll(Arrays.asList(this.servers));
     }
     
-    protected static void preRun() {
-        if (!Settings.setInstance()) {
-            System.out.println("An error occured on properties load.");
-            System.exit(0b0);
-        }
+    public void parseServerFile() {
+        
     }
     
 }
