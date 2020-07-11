@@ -29,8 +29,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import me.jaysonfong.staticresourceserver.core.Settings;
 import me.jaysonfong.staticresourceserver.exception.ServerIOException;
+import me.jaysonfong.staticresourceserver.server.Server;
+import me.jaysonfong.staticresourceserver.utils.Language;
 
 /**
  *
@@ -38,6 +39,9 @@ import me.jaysonfong.staticresourceserver.exception.ServerIOException;
  */
 public abstract class BaseHandler implements HttpHandler {
     
+    protected Server conf;
+    
+    public abstract BaseHandler newInstance();
     public abstract void handleRequest(HttpExchange httpExchange) throws IOException;
     
     @Override
@@ -52,12 +56,16 @@ public abstract class BaseHandler implements HttpHandler {
         
     }
     
+    public void setServerConf(Server conf) {
+        this.conf = conf;
+    }
+    
     protected void handleError(HttpExchange httpExchange, IOException e) {
-        String response = this.getLocaleMessage("e_handler");
+        String response = Language.getLocaleMessage("e_handler");
         try {
             sendStringResponse(httpExchange, response, 0x1f4);
         } catch (IOException sendException) {
-            System.out.println(this.getLocaleMessage("e_handler_double_exception"));
+            System.out.println(Language.getLocaleMessage("e_handler_double_exception"));
         }
     }
     
@@ -65,7 +73,7 @@ public abstract class BaseHandler implements HttpHandler {
         try {
             sendStringResponse(httpExchange, e.getCombinedStatus(), e.getStatusCode());
         } catch (IOException sendException) {
-            System.out.println(this.getLocaleMessage("e_handler_double_exception"));
+            System.out.println(Language.getLocaleMessage("e_handler_double_exception"));
         }
     }
     
@@ -86,9 +94,5 @@ public abstract class BaseHandler implements HttpHandler {
             outputStream.flush();
         }
     }
-    
-    protected String getLocaleMessage(String messageIdentifier) {
-        return Settings.S.getLanguageBundle().getString(messageIdentifier);
-    }
-        
+            
 }

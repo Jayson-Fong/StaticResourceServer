@@ -146,12 +146,11 @@ public class Settings {
     }
     
     protected String propertyFetch(String key) {
-        return properties.get(key).toString();
+        return properties.getProperty(key);
     }
     
     protected Object propertyFetch(String key, Object fallback) {
-        if (propertiesKeys.contains(key)) return properties.get(key);
-        return fallback;
+        return properties.getProperty(key, (String) fallback);
     }
     
 }

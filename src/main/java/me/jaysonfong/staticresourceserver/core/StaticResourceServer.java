@@ -27,7 +27,7 @@ package me.jaysonfong.staticresourceserver.core;
  *
  * @author Jayson Fong <contact@jaysonfong.me>
  */
-public class Server {
+public class StaticResourceServer {
     
     public static void main(String[] args) {
         preRun();
