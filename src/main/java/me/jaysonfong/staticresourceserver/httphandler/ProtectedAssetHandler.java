@@ -25,6 +25,7 @@ package me.jaysonfong.staticresourceserver.httphandler;
 
 import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
+import me.jaysonfong.staticresourceserver.server.Server;
 
 /**
  *
@@ -32,14 +33,11 @@ import java.io.IOException;
  */
 public class ProtectedAssetHandler extends BaseHandler {
     
+    public ProtectedAssetHandler(Server conf) {}
+    
     @Override
     public void handleRequest(HttpExchange httpExchange) throws IOException {
         
-    }
-    
-    @Override
-    public ProtectedAssetHandler newInstance() {
-        return new ProtectedAssetHandler();
     }
     
 }

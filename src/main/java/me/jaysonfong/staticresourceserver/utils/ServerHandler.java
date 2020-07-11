@@ -21,23 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package me.jaysonfong.staticresourceserver.httphandler;
+package me.jaysonfong.staticresourceserver.utils;
 
-import com.sun.net.httpserver.HttpExchange;
-import java.io.IOException;
+import me.jaysonfong.staticresourceserver.httphandler.BaseHandler;
+import me.jaysonfong.staticresourceserver.httphandler.ProtectedAssetHandler;
+import me.jaysonfong.staticresourceserver.httphandler.StaticAssetHandler;
 import me.jaysonfong.staticresourceserver.server.Server;
+import me.jaysonfong.staticresourceserver.server.ServerType;
 
 /**
  *
  * @author Jayson Fong <contact@jaysonfong.me>
  */
-public class StaticAssetHandler extends BaseHandler {
- 
-    public StaticAssetHandler(Server conf) {}
+public class ServerHandler {
     
-    @Override
-    public void handleRequest(HttpExchange httpExchange) throws IOException {
-        
+    protected ServerHandler() {}
+    
+    public static BaseHandler getHandlerByType(ServerType type, Server conf) {
+        switch(type) {
+            case ProtectedAssetServer:
+                return new ProtectedAssetHandler(conf);
+            case StaticAssetServer:
+            default:
+                return new StaticAssetHandler(conf);
+        }
     }
     
 }

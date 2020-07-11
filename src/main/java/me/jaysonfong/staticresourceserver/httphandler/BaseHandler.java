@@ -41,7 +41,6 @@ public abstract class BaseHandler implements HttpHandler {
     
     protected Server conf;
     
-    public abstract BaseHandler newInstance();
     public abstract void handleRequest(HttpExchange httpExchange) throws IOException;
     
     @Override

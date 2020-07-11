@@ -33,6 +33,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import me.jaysonfong.staticresourceserver.server.parser.ServerParser;
 import me.jaysonfong.staticresourceserver.utils.Language;
+import me.jaysonfong.staticresourceserver.utils.ServerHandler;
 
 /**
  *
@@ -106,7 +107,7 @@ public class ServerManager implements Runnable {
     }
     
     protected HttpHandler getHandler(Server conf) {
-        return conf.type.getHandler(conf);
+        return ServerHandler.getHandlerByType(conf.type, conf);
     }
     
 }

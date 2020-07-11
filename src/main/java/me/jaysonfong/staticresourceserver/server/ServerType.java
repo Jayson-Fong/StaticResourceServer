@@ -35,26 +35,7 @@ import me.jaysonfong.staticresourceserver.utils.Language;
  */
 public enum ServerType {
     
-    StaticAssetServer(new StaticAssetHandler()),
-    ProtectedAssetServer(new ProtectedAssetHandler());
-    
-    protected HttpHandler handler;
-    
-    ServerType(HttpHandler httpHandler) {
-        this.handler = httpHandler;
-    }
-    
-    public HttpHandler getHandler(Server conf) {
-        if (handler instanceof BaseHandler) {
-            BaseHandler rHandler = ((BaseHandler) handler).newInstance();
-            rHandler.setServerConf(conf);
-        }
-        try {
-            return this.handler.getClass().getConstructor().newInstance();
-        } catch (Exception e) {
-            System.out.println(Language.getLocaleMessage("e_handler_create"));
-        }
-        return handler;
-    }
+    StaticAssetServer,
+    ProtectedAssetServer
     
 }
