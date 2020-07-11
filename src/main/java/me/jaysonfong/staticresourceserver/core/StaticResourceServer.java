@@ -33,6 +33,8 @@ import me.jaysonfong.staticresourceserver.server.parser.StaticServerParser;
  */
 public class StaticResourceServer {
     
+    private StaticResourceServer() {}
+    
     public static void main(String[] args) {
         preRun();
         ServerParser serverParser = new StaticServerParser();

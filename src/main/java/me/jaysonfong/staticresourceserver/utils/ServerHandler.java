@@ -35,7 +35,7 @@ import me.jaysonfong.staticresourceserver.server.ServerType;
  */
 public class ServerHandler {
     
-    protected ServerHandler() {}
+    private ServerHandler() {}
     
     public static BaseHandler getHandlerByType(ServerType type, Server conf) {
         switch(type) {

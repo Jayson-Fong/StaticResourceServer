@@ -31,6 +31,8 @@ import me.jaysonfong.staticresourceserver.core.Settings;
  */
 public class Language {
     
+    private Language() {}
+    
     public static String getLocaleMessage(String messageIdentifier) {
         return Settings.S.getLanguageBundle().getString(messageIdentifier);
     }
